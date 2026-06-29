@@ -1,1 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Linked Image Grid</title>
+    <style>
+        /* Container styling turned into a CSS Grid */
+        .image-grid {
+            display: grid;
+            /* Creates columns that automatically fit and scale down to a minimum of 250px */
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            /* Space between the grid items */
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Styling for the link items */
+        .grid-item {
+            display: block;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        /* Subtle lift effect on hover */
+        .grid-item:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Ensures images scale perfectly without stretching */
+        .grid-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- The Grid Container -->
+    <div class="image-grid">
+        
+        <!-- Grid Item 1 -->
+        <a href="https://example.com" class="grid-item" target="_blank">
+            <img src="https://picsum.photos" alt="Description of Image 1">
+        </a>
+
+        <!-- Grid Item 2 -->
+        <a href="https://example.com" class="grid-item" target="_blank">
+            <img src="https://picsum.photos" alt="Description of Image 2">
+        </a>
+
+        <!-- Grid Item 3 -->
+        <a href="https://example.com" class="grid-item" target="_blank">
+            <img src="https://picsum.photos" alt="Description of Image 3">
+        </a>
+
+        <!-- Grid Item 4 -->
+        <a href="https://example.com" class="grid-item" target="_blank">
+            <img src="https://picsum.photos" alt="Description of Image 4">
+        </a>
+
+        <!-- Grid Item 5 -->
+        <a href="https://example.com" class="grid-item" target="_blank">
+            <img src="https://picsum.photos" alt="Description of Image 5">
+        </a>
+
+        <!-- Grid Item 6 -->
+        <a href="https://example.com" class="grid-item" target="_blank">
+            <img src="https://picsum.photos" alt="Description of Image 6">
+        </a>
+
+    </div>
+
+</body>
+</html>
 
