@@ -1,82 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Linked Image Grid</title>
-    <style>
-        /* Container styling turned into a CSS Grid */
-        .image-grid {
-            display: grid;
-            /* Creates columns that automatically fit and scale down to a minimum of 250px */
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            /* Space between the grid items */
-            gap: 20px;
-            padding: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iframe Grid Launcher</title>
 
-        /* Styling for the link items */
-        .grid-item {
-            display: block;
-            overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s ease-in-out;
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
 
-        /* Subtle lift effect on hover */
-        .grid-item:hover {
-            transform: translateY(-5px);
-        }
+body{
+    background:#121212;
+    color:white;
+    padding:20px;
+}
 
-        /* Ensures images scale perfectly without stretching */
-        .grid-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            display: block;
-        }
-    </style>
+h1{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:20px;
+}
+
+.item{
+    background:#1f1f1f;
+    border-radius:12px;
+    padding:40px;
+    text-align:center;
+    cursor:pointer;
+    transition:.2s;
+    border:2px solid transparent;
+}
+
+.item:hover{
+    background:#2b2b2b;
+    border-color:#4CAF50;
+    transform:scale(1.03);
+}
+
+#viewer{
+    position:fixed;
+    inset:0;
+    background:black;
+    display:none;
+    flex-direction:column;
+    z-index:9999;
+}
+
+#topbar{
+    height:55px;
+    background:#111;
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+    padding:10px;
+}
+
+#exit{
+    padding:10px 18px;
+    border:none;
+    background:#ff4444;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+#exit:hover{
+    background:#cc0000;
+}
+
+iframe{
+    flex:1;
+    width:100%;
+    border:none;
+}
+</style>
 </head>
+
 <body>
 
-    <!-- The Grid Container -->
-    <div class="image-grid">
-        
-        <!-- Grid Item 1 -->
-        <a href="https://example.com" class="grid-item" target="_blank">
-            <img src="logo.png" alt="Description of Image 1">
-        </a>
+<h1>Launcher</h1>
 
-        <!-- Grid Item 2 -->
-        <a href="https://example.com" class="grid-item" target="_blank">
-            <img src="https://picsum.photos" alt="Description of Image 2">
-        </a>
-
-        <!-- Grid Item 3 -->
-        <a href="https://example.com" class="grid-item" target="_blank">
-            <img src="https://picsum.photos" alt="Description of Image 3">
-        </a>
-
-        <!-- Grid Item 4 -->
-        <a href="https://example.com" class="grid-item" target="_blank">
-            <img src="https://picsum.photos" alt="Description of Image 4">
-        </a>
-
-        <!-- Grid Item 5 -->
-        <a href="https://example.com" class="grid-item" target="_blank">
-            <img src="https://picsum.photos" alt="Description of Image 5">
-        </a>
-
-        <!-- Grid Item 6 -->
-        <a href="https://example.com" class="grid-item" target="_blank">
-            <img src="https://picsum.photos" alt="Description of Image 6">
-        </a>
-
+<div class="grid">
+    <div class="item" onclick="openURL('/')">
+        Item 1
     </div>
+
+    <div class="item" onclick="openURL('https://raw.githubusercontent.com/USERNAME/REPO/main/another.html')">
+        Item 2
+    </div>
+
+    <div class="item" onclick="openURL('https://raw.githubusercontent.com/USERNAME/REPO/main/test.html')">
+        Item 3
+    </div>
+
+    <div class="item" onclick="openURL('https://raw.githubusercontent.com/USERNAME/REPO/main/page.html')">
+        Item 4
+    </div>
+</div>
+
+<div id="viewer">
+    <div id="topbar">
+        <button id="exit" onclick="closeViewer()">Exit</button>
+    </div>
+
+    <iframe id="frame"></iframe>
+</div>
+
+<script>
+function openURL(url){
+    document.getElementById("viewer").style.display = "flex";
+    document.getElementById("frame").src = url;
+}
+
+function closeViewer(){
+    document.getElementById("viewer").style.display = "none";
+    document.getElementById("frame").src = "";
+}
+</script>
 
 </body>
 </html>
-
